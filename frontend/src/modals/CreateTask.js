@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import axios from 'axios';
 
 const CreateTaskPopup = ({modal, toggle, save}) => {
     const [taskName, setTaskName] = useState('');
@@ -26,17 +25,6 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
         taskObj["Description"] = description
         save(taskObj)
 
-    }
-
-    onclickCreateTask = _event => {
-        Event.preventDefault();
-        
-        const body={
-            title:this.state.taskName,
-            Text:this.state.description
-        };
-
-        axios.post('http://localhost:8080/api/save', body)
     }
 
     return (
