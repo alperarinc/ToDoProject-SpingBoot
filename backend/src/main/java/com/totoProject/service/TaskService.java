@@ -24,7 +24,21 @@ public class TaskService {
         taskRepositoriy.deleteById(taskId);
     }
 
+    public Task updateTask(Task task){
+        Task updateTask = taskRepositoriy.findById(task.getId()).orElse(null);
+        updateTask.setId(task.getId());
+        updateTask.setText(task.getText());
+        updateTask.setTitle(task.getTitle());
+
+        return taskRepositoriy.save(updateTask);
+    }
+    public Task taskById(Long taskId){
+        return taskRepositoriy.getById(taskId);
+    }
+
+
     public List<Task> findAllTask() {
+
         return taskRepositoriy.findAll();
     }
 }
